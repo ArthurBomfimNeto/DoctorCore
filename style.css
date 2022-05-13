@@ -11,11 +11,17 @@
   --headline: hsl(210, 11%, 15%);
   --paragraph: hsl(210, 9%, 31%);
   --brand-beige: hsl(39, 100%, 97%);
-  --brand-light: hsl(148, 23%, 89%);
+  --brand-ligth: hsl(148, 23%, 89%);
   --nav-height: 7.2rem;
+
+  --bg-ligth: hsl(180, 14%, 97%);
 
   /* 62.5%  = 10px alterando o padrão que é 16px 100%*/
   font-size: 62.5%; /* 1rem = 10px*/
+}
+
+html {
+  scroll-behavior: smooth; /*comportamento do scroll suave*/
 }
 
 html,
@@ -30,6 +36,8 @@ body {
 
   text-align: center;
   overflow: overlay;
+
+  background-color: var(--bg-ligth);
 }
 
 .wrapper {
@@ -42,102 +50,39 @@ ul {
   list-style: none;
 }
 
-/*================= HEADER ====================*/
-
-header {
-  margin-top: calc(4.1rem + var(--nav-height));
+section {
+  padding-block: 10rem;
 }
 
-header::before {
-  content: '';
-  background-color: var(--brand-light);
-  width: 100%;
-  height: calc(108rem + var(--nav-height));
-  display: block;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-header h4 {
-  font-size: 1.4rem;
-  color: var(--primary-color);
-  margin-bottom: 1.6rem;
-}
-
-header h1 {
+section header h1 {
   font-size: 3.4rem;
   color: var(--secondary-color);
   line-height: 130%;
   margin-bottom: 2.4rem;
 }
 
-header p {
-  font-size: 1.8rem;
-  font-weight: 400;
-  margin-bottom: 3.4rem;
-}
-
-header button {
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: 0.8rem;
-  margin-bottom: 6rem;
-  margin-left: auto;
-  margin-right: auto;
-  height: 6.2rem;
-  width: 26.3rem;
-  border-radius: 4rem;
-
-  color: white;
-  font-size: 1.4rem;
+section header h2 {
   font-weight: 700;
-  text-transform: uppercase;
+  font-size: 3rem;
+  line-height: 3.9rem;
+  text-align: center;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.6rem;
-}
-
-header img {
-  width: 26.4rem;
-  display: block;
-  margin-inline: auto;
-  object-position: 0 2rem;
-}
-
-div.stats {
-  width: 32.7rem;
-  padding-block: 4rem;
-
-  margin-inline: auto;
-
-  background-color: var(--brand-beige);
-  border: 1px solid var(--brand-light);
-  border-radius: 0.6rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6rem;
-}
-
-div.stat h3 {
-  font-size: 4.8rem;
-  line-height: 130%;
   color: var(--headline);
-  margin-bottom: 0.4rem;
 }
 
-div.stat p {
-  margin: 0;
-
+section header h4 {
+  font-size: 1.4rem;
   color: var(--primary-color);
+  margin-bottom: 1.6rem;
+  text-transform: uppercase;
+}
+
+section .content p {
+  font-weight: 400;
   font-size: 1.6rem;
   line-height: 150%;
+
+  color: var(--paragraph);
 }
 
 /*========== NAVIGATION ================ */
@@ -145,14 +90,13 @@ div.stat p {
 nav {
   display: flex;
 
-  margin-inline: auto;
-
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
 
   height: var(--nav-height);
+
+  z-index: 100;
 }
 
 nav .wrapper {
@@ -163,10 +107,9 @@ nav .wrapper {
 
 nav.scroll {
   background-color: var(--primary-color);
-  width: 100%;
 }
 
-nav.scroll svg:nth-child(1) path {
+nav.scroll .logo path {
   fill: white;
 }
 
@@ -187,7 +130,7 @@ body.menu-expanded {
 }
 
 body.menu-expanded > :not(nav) {
-  display: none;
+  visibility: hidden;
 }
 
 .menu,
@@ -203,6 +146,10 @@ body.menu-expanded .close-menu {
   visibility: visible;
 }
 
+.menu {
+  transform: translateY(100%);
+}
+
 body.menu-expanded .menu {
   padding-top: var(--nav-height);
 
@@ -214,10 +161,12 @@ body.menu-expanded .menu {
   height: 100vh;
 
   background-color: var(--primary-color);
+
+  transition: transform 300ms;
+  transform: translateY(0);
 }
 
 body.menu-expanded nav {
-  position: relative;
 }
 
 .menu ul:nth-child(1) {
@@ -277,4 +226,136 @@ body.menu-expanded .logo path {
 
 body.menu-expanded button path {
   stroke: #ffffff;
+}
+
+/*================= HOME ====================*/
+
+#home {
+  padding-top: calc(4.1rem + var(--nav-height));
+}
+
+#home::before {
+  content: '';
+  background-color: var(--brand-ligth);
+  width: 100%;
+  height: calc(108rem + var(--nav-height));
+  display: block;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+#home p {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 3.4rem;
+}
+
+#home button {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 0.8rem;
+  margin-bottom: 6rem;
+  margin-left: auto;
+  margin-right: auto;
+  height: 6.2rem;
+  width: 26.3rem;
+  border-radius: 4rem;
+
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+#home img {
+  width: 26.4rem;
+  display: block;
+  margin-inline: auto;
+  object-position: 0 2rem;
+}
+
+#home .stats {
+  width: 32.7rem;
+  padding-block: 4rem;
+
+  margin-inline: auto;
+
+  background-color: var(--brand-beige);
+  border: 1px solid var(--brand-ligth);
+  border-radius: 0.6rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6rem;
+}
+
+#home .stat h3 {
+  font-size: 4.8rem;
+  line-height: 130%;
+  color: var(--headline);
+  margin-bottom: 0.4rem;
+}
+
+#home .stat p {
+  margin: 0;
+
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  line-height: 150%;
+}
+
+/*================= SERVICES ===================== */
+
+#services header h2 {
+  margin-bottom: 6rem;
+}
+
+#services .cards {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+#services .card {
+  padding: 2.4rem;
+  text-align: left;
+  background: #ffffff;
+  /* Primary Colors/brand-green-ligth */
+
+  border: 1px solid var(--brand-ligth);
+  border-radius: 0.6rem;
+}
+
+#services .card h3 {
+  margin-block: 1.6rem;
+
+  font-weight: 700;
+  font-size: 2.3rem;
+  line-height: 3.1rem;
+  /* text-align: center; */
+}
+
+/*================= ABOUT ===================== */
+#about header h2 {
+  text-align: left;
+}
+
+#about {
+  text-align: left;
+  background-color: var(--brand-beige);
+}
+
+
+#about .content p {
+  margin-top: 2.4rem;
+  margin-bottom: 6rem;
 }
