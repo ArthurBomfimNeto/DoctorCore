@@ -234,8 +234,6 @@ body.menu-expanded .menu {
   transform: translateY(0);
 }
 
-body.menu-expanded nav {
-}
 
 .menu ul:nth-child(1) {
   display: flex;
